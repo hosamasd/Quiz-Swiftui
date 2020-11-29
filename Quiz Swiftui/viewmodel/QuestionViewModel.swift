@@ -36,7 +36,7 @@ class QuestionViewModel: ObservableObject {
         let db = Firestore.firestore()
         
         // change this to set.....
-        db.collection("Round_1").getDocuments { (snap, err) in
+        db.collection(set).getDocuments { (snap, err) in
             
             guard let data = snap else{return}
             
@@ -46,8 +46,6 @@ class QuestionViewModel: ObservableObject {
                     return try? doc.data(as: Question.self)
                 })
             }
-            
-            print(self.questions)
         }
     }
 }

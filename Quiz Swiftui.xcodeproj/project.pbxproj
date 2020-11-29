@@ -82,7 +82,6 @@
 				9FAF9D2B257420E600428177 /* Quiz_SwiftuiApp.swift */,
 				9FAF9D522574214E00428177 /* viewmodel */,
 				9FAF9D512574214800428177 /* model */,
-				9FAF9D502574213D00428177 /* view */,
 				9FAF9D532574215500428177 /* scenes */,
 				9FAF9D2F257420E700428177 /* Assets.xcassets */,
 				9FAF9D34257420E700428177 /* Info.plist */,
@@ -98,13 +97,6 @@
 				9FAF9D32257420E700428177 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		9FAF9D502574213D00428177 /* view */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = view;
 			sourceTree = "<group>";
 		};
 		9FAF9D512574214800428177 /* model */ = {

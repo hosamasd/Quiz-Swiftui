@@ -9,8 +9,10 @@ import SwiftUI
 
 struct Home: View {
     
-    @State var show=false
-    @State var set=""
+    @State var show = false
+    // Storing Level For Fetching Questions...
+    @State var setsss:String = "Round_1"
+    
     // for analytics....
     @State var correct = 0
     @State var wrong = 0
@@ -20,7 +22,7 @@ struct Home: View {
         
         VStack{
             
-            Text("Homam Mohamed")
+            Text("Hosam Mohamed")
                 .font(.system(size: 38))
                 .fontWeight(.heavy)
                 .foregroundColor(.purple)
@@ -38,48 +40,45 @@ struct Home: View {
             // Level View...
             
             LazyVGrid(columns: Array(repeating: GridItem(.flexible(),spacing: 20), count: 2),spacing: 35, content: {
-
-                ForEach(1...4,id: \.self){index in
+ 
+                // four levels...
                 
-                Image("lv\(index)")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(height: 150)
-
-                Text("SwiftUI Quiz")
-                    .font(.title2)
-                    .fontWeight(.heavy)
-                    .foregroundColor(.black)
-
-                Text("LEVEL \(index)")
-                    .foregroundColor(.black)
+                ForEach(1...4,id: \.self){index in
+                    
+                    VStack(spacing: 15){
+                        
+                        Image("lv\(index)")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(height: 150)
+                        
+                        Text("SwiftUI Quiz")
+                            .font(.title2)
+                            .fontWeight(.heavy)
+                            .foregroundColor(.black)
+                        
+                        Text("LEVEL \(index)")
+                            .foregroundColor(.black)
+                    }
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color.white)
+                    .cornerRadius(15)
+                    // opening QA view as sheet...
+                    .onTapGesture(perform: {
+                        self.setsss = "Round_\(index)"
+                        show.toggle()
+                    })
                 }
-                .padding()
-                .frame(maxWidth:.infinity)
-                .background(Color.white)
-                .cornerRadius(15)
-
-                .onTapGesture(perform: {
-                    set = "Round_\(index)"
-                    self.show.toggle()
-                })
             })
             .padding()
             
             Spacer(minLength: 0)
-            
-            }
+        }
         .background(Color.black.opacity(0.05).ignoresSafeArea())
-        
         .sheet(isPresented: $show, content: {
-            QAView(correct: $correct, wrong: $wrong,answered: $answered)
+            
+            QAView(correct: $correct, wrong: $wrong,answered: $answered,set: $setsss)
         })
-        
-    }
-}
-
-struct Home_Previews: PreviewProvider {
-    static var previews: some View {
-        Home()
     }
 }

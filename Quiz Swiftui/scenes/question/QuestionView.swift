@@ -84,7 +84,9 @@ struct QuestionView: View {
                 .disabled(question.isSubmitted ? true : false)
                 .opacity(question.isSubmitted ? 0.7 : 1)
                 
-                Button(action:{withAnimation{question.completed.toggle()}}, label: {
+                Button(action:{withAnimation{question.completed.toggle()
+                    answered += 1
+                }}, label: {
                     Text("Next")
                         .foregroundColor(.white)
                         .padding(.vertical)
