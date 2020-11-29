@@ -6,15 +6,14 @@
 //
 
 import SwiftUI
-//import FirebaseFirestoreSwift
+import FirebaseFirestoreSwift
 
 // COdable Model...
 
 struct Question: Identifiable,Codable {
-    let id = UUID()
     
     // it will fetch doc ID...
-//    @DocumentID var id: String?
+    @DocumentID var id: String?
     var question : String?
     var optionA: String?
     var optionB: String?
